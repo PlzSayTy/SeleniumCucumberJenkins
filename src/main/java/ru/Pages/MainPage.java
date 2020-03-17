@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.Wait;
 import java.util.Locale;
 
 public class MainPage extends BasePage{
-    Actions builder;
-    Wait wait;
     @FindBy(xpath = "//span[contains(text(), 'Ипотека')]")
     WebElement ipoteka;
     @FindBy(xpath = "//a[contains(text(), 'Ипотека на готовое жиль')]")
