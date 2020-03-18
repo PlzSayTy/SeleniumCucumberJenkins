@@ -97,6 +97,18 @@
     <build>
 
         <plugins>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.10.v20150310</version>
+                <configuration>
+                    <stopKey>stop</stopKey>
+                    <stopPort>1234</stopPort>
+                    <httpConnector>
+                        <port>9999</port>
+                    </httpConnector>
+                </configuration>
+            </plugin>
 
             <plugin>
 

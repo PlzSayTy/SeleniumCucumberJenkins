@@ -15,16 +15,22 @@ import ru.Steps.BaseStep;
 public class IpotekaPage extends BasePage {
     @FindBy(id = "iFrameResizer0")
     WebElement frame;
-    JavascriptExecutor executor;
-    Wait wait;
-    WebDriver driver = BaseStep.getDriver();
     public void changeFrame() {
+        executor.executeScript("window.scrollTo(0, 1600)");
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("iFrameResizer0")));
         driver.switchTo().frame(frame);
     }
 
     public void fullFill(String xpath, String yourKeys) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath)));
         driver.findElement(By.xpath(xpath)).clear();
         driver.findElement(By.xpath(xpath)).sendKeys(yourKeys);
+    }
+
+    public void assertChangeFirstTime(String amountOfCredit){
+        if (!(driver.findElement(By.xpath("//input[contains(@id, 'estateCost')]")).getAttribute("value").equals("5 180 000 \u20BD"))){
+            fullFill("//input[contains(@id, 'estateCost')]", "5180000");
+        }
     }
 
     public void waitUntilItChanges(String amountOfCredit, String mounthlyPayment, String requiredIncome, String rate) {
@@ -35,7 +41,7 @@ public class IpotekaPage extends BasePage {
     }
 
     public void JSclick(String xpath) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", driver.findElement(By.xpath(xpath)));
+        executor.executeScript("arguments[0].click();", driver.findElement(By.xpath(xpath)));
     }
 
     public void assertAllOfThem() {
@@ -47,10 +53,9 @@ public class IpotekaPage extends BasePage {
         });
     }
     public void clickWaitAndAssert(String clickAfterWait){
-
         Assert.assertTrue(driver.findElement(By.xpath(clickAfterWait)).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath(clickAfterWait)).isEnabled());
         executor.executeScript("arguments[0].click();", driver.findElement(By.xpath(clickAfterWait)));
-        JSclick(clickAfterWait);
+        click(clickAfterWait);
     }
 }

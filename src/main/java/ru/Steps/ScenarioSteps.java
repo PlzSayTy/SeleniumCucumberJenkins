@@ -10,7 +10,7 @@ public class ScenarioSteps {
     MainPageStep mainPageStep = new MainPageStep();
     IpotekaPageStep ipotekaPageStep = new IpotekaPageStep();
     @When("Выполнено наведение на Ипотека и выбор Ипотека на готовое жилье")
-    public void getMouseToIpoteka(){
+    public void getMouseToIpotekaStep(){
         mainPageStep.getMouseToIpoteka();
     }
     @Then ("выполняется смена фрейма")
@@ -20,6 +20,10 @@ public class ScenarioSteps {
     @When ("Заполняется поле Стоимость недвижимости")
     public void fullFillCost(){
         ipotekaPageStep.fullFillCost();
+    }
+    @Then("Делаю лишнюю проверку из за лагающей менюшки")
+    public void uselessChecking(){
+        ipotekaPageStep.uselessCheck();
     }
     @Then ("Проверяется изменение полей справа 1")
     public void firstCheck(){

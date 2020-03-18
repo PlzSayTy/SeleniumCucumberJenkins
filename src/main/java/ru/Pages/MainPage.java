@@ -1,6 +1,7 @@
 package ru.Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +16,7 @@ public class MainPage extends BasePage{
     @FindBy(xpath = "//a[contains(text(), 'Ипотека на готовое жиль')]")
     WebElement clickAfterWait;
     public void goToAndWait(){
+        //ipoteka.click();
         builder.moveToElement(ipoteka).perform();
         wait.until(ExpectedConditions.elementToBeClickable(clickAfterWait));
         clickAfterWait.click();

@@ -12,6 +12,10 @@ public class IpotekaPageStep {
     public void fullFillCost(){
         new IpotekaPage().fullFill("//*[@id=\"estateCost\"]", "5180000");
     }
+    @Step ("Делаю лишнюю проверку из за лагающей менюшки")
+    public void uselessCheck(){
+        new IpotekaPage().assertChangeFirstTime("4 403 000 \u20BD");
+    }
     @Step ("Проверяется изменение полей справа 1")
     public void firstCheck(){
         new  IpotekaPage().waitUntilItChanges("4 403 000 \u20BD","46 244 \u20BD", "66 062 \u20BD", "9,6 %");
@@ -34,7 +38,7 @@ public class IpotekaPageStep {
     }
     @Step ("Выключаю зарплатныю карту Сбербанка")
     public void turnOffSberCard(){
-        new IpotekaPage().JSclick("//input[contains(@data-test-id, 'paidToCard')]/parent::label/parent::div");
+        new IpotekaPage().click("//input[contains(@data-test-id, 'paidToCard')]/parent::label/parent::div");
     }
     @Step ("Проверяется изменение полей справа 4")
     public void fourthCheck(){

@@ -1,8 +1,9 @@
 package ru.Steps;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.Utils.TestProperties;
-import org.junit.After;
-import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
